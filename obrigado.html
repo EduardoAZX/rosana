@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#fffdf8">
+  <title>Obrigado | Crio HD — Serela Clinic</title>
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32">
+  <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="thanks">
+    <div class="container thanks__inner">
+      <p class="label">Solicitação recebida</p>
+      <h1>Obrigado! <em>Deu tudo certo.</em></h1>
+      <p>Nossa equipe entrará em contato com você. Se você quer priorizar o seu atendimento e garantir sua vaga, clique no botão abaixo para falar direto com nossa equipe no WhatsApp.</p>
+      <!-- TODO: preencher WHATSAPP_NUMBER abaixo no formato 5511999999999 -->
+      <a class="btn" id="whatsappCta" href="#" target="_blank" rel="noopener">Falar agora no WhatsApp</a>
+      <a class="thanks__back" href="index.html">&larr;&ensp;Voltar ao site</a>
+      <small class="thanks__note">Serela Clinic — Embelezamento e Emagrecimento Corporal Estratégico</small>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      var WHATSAPP_NUMBER="";
+      var cta=document.getElementById("whatsappCta");
+      var first="";
+      try{
+        var lead=JSON.parse(sessionStorage.getItem("serelaLead")||"{}");
+        if(lead.nome)first=String(lead.nome).trim().split(" ")[0];
+      }catch(e){}
+      var text="Olá! "+(first?"Meu nome é "+first+". ":"")+"Acabei de solicitar minha avaliação do Crio HD e quero priorizar meu atendimento.";
+      cta.href=WHATSAPP_NUMBER?"https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(text):"https://instagram.com/serelaclinic";
+    })();
+  </script>
+</body>
+</html>
