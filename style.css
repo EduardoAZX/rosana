@@ -30,7 +30,7 @@ h1 em,h2 em,h3 em{font-style:italic}
 .label{margin:0 0 22px;color:var(--muted);font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.12em}
 
 /* botões */
-.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 30px;border:0;border-radius:999px;cursor:pointer;color:var(--espresso);background:var(--gold);font:400 13.5px/1.35 var(--sans);text-align:center;transition:color .3s ease,background-color .3s ease,transform .4s cubic-bezier(.2,.8,.25,1),box-shadow .4s ease}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 32px;border:0;border-radius:999px;cursor:pointer;color:var(--espresso);background:var(--gold);font:400 15px/1.35 var(--sans);text-align:center;transition:color .3s ease,background-color .3s ease,transform .4s cubic-bezier(.2,.8,.25,1),box-shadow .4s ease}
 .btn:hover{color:var(--espresso);background:var(--gold-lit)}
 .btn--light{color:var(--espresso);background:var(--paper)}
 .btn--light:hover{color:var(--espresso);background:var(--gold)}
@@ -51,36 +51,30 @@ h1 em,h2 em,h3 em{font-style:italic}
 .image-slot>small{margin-top:8px;color:#9a9188;font-size:9px;letter-spacing:.06em}
 
 /* ====================== DOBRA 1 — HERO ====================== */
-.hero{position:relative;display:grid;align-items:center;min-height:100svh;padding:clamp(56px,7vw,92px) 0;overflow:hidden;color:#fff;isolation:isolate}
+.hero{position:relative;display:grid;align-items:center;min-height:100svh;padding:clamp(56px,7vw,92px) 0;overflow:hidden;color:#fff;isolation:isolate;border-bottom-left-radius:clamp(22px,2.4vw,34px);border-bottom-right-radius:clamp(22px,2.4vw,34px)}
 /* Foto do hero — para trocar, basta apontar outra imagem aqui. */
 .hero__media{position:absolute;inset:0;z-index:-2;justify-content:flex-end;padding-bottom:22px;background:#2a2a2a url("assets/hero.webp") 70% center/cover no-repeat;color:#c4bcb2}
 .hero__media>small{color:#b5ada3}
 .hero__veil{position:absolute;inset:0;z-index:-1;background:radial-gradient(75% 65% at 50% 45%,rgba(12,12,12,.42),rgba(12,12,12,.78) 70%,rgba(12,12,12,.9))}
 
 .hero__content{width:min(1240px,calc(100% - 64px));margin:0 auto}
-.hero h1{max-width:15ch;font-size:var(--title);color:#fff}
+/* headline do hero é o maior tipo da página — escala própria, acima de --title */
+.hero h1{max-width:15ch;font-size:clamp(38px,4.6vw,64px);color:#fff}
 .hero h1 em{color:var(--champagne)}
 .hero__note{max-width:540px;margin:clamp(24px,3vw,34px) 0 0;color:#cfc9c1;font-size:14px;line-height:1.8}
 /* Selos do hero: três garantias independentes, não uma frase corrida */
 .hero__seals{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin:clamp(24px,2.8vw,34px) 0 0;padding:0;list-style:none}
 .hero__seals li{display:flex;align-items:center;gap:10px;color:var(--champagne);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
 .hero__seals li::before{content:"";flex:0 0 5px;width:5px;height:5px;rotate:45deg;background:var(--gold);box-shadow:0 0 0 3px rgba(200,162,74,.14)}
-.hero .btn{margin-top:clamp(30px,3.6vw,44px)}
+.hero .btn{margin-top:clamp(30px,3.6vw,44px);min-height:64px;padding:0 38px;font-size:17px}
+/* No desktop o corte de "cover" é vertical: ancorar o topo evita cortar a cabeça
+   e mantém o rosto acima da coluna de texto, que fica à esquerda. */
+@media(min-width:981px){
+  .hero__media{background-position:74% 16%}
+}
 
-/* ================== DOBRA 2 — DECLARAÇÃO ================== */
-.statement{padding:clamp(92px,11vw,158px) 0 clamp(56px,6vw,84px)}
-.statement__inner{position:relative;max-width:940px;margin:auto;text-align:center}
-.statement h2{margin:0 auto;max-width:18ch}
-.statement h2 em{color:var(--gold)}
-.float{position:absolute;width:clamp(76px,8.4vw,110px);border-radius:10px;background:var(--sand) center/cover no-repeat;box-shadow:0 0 0 5px var(--paper),0 22px 34px -20px rgba(20,18,12,.55)}
-.float>span{font-size:8px;letter-spacing:.18em}
-.float--1{top:-40%;left:2%;transform:rotate(-5deg);aspect-ratio:640/853;background-image:url("assets/mini-1.webp")}
-.float--2{top:-28%;right:1%;transform:rotate(4deg);aspect-ratio:640/853;background-image:url("assets/mini-2.webp")}
-.float--3{bottom:-34%;left:7%;transform:rotate(5deg);aspect-ratio:640/853;background-image:url("assets/mini-3.webp")}
-.float--4{bottom:-48%;right:5%;transform:rotate(-4deg);aspect-ratio:640/853;background-image:url("assets/mini-4.webp")}
-
-/* ================== FAIXA DE NÚMEROS ================== */
-.band{padding:0 0 clamp(56px,6vw,84px)}
+/* --- FAIXA DE NÚMEROS — seção removida do HTML; estilos mantidos caso volte --- */
+.band{padding:clamp(20px,3vw,40px) 0 clamp(56px,6vw,84px)}
 .band__inner{width:min(1240px,calc(100% - 64px));margin:auto;padding:clamp(32px,3.6vw,50px) clamp(28px,3.4vw,48px);border-radius:var(--r);background:var(--ivory)}
 .band__title{max-width:none;margin:0 0 clamp(24px,2.8vw,36px);text-align:center}
 .band__stats{display:grid;grid-template-columns:repeat(3,1fr);padding-top:clamp(22px,2.6vw,32px);border-top:1px solid var(--line)}
@@ -91,8 +85,9 @@ h1 em,h2 em,h3 em{font-style:italic}
 .band__stats strong{display:block;color:var(--gold);font:400 clamp(26px,2.9vw,40px)/1 var(--serif);white-space:nowrap}
 .band__stats small{display:block;margin-top:12px;color:var(--muted);font-size:11.5px;line-height:1.5;letter-spacing:.03em;white-space:nowrap}
 
-/* ================ DOBRA 2 — REGIÕES (PASSOS) ================ */
-.steps{padding:0 0 clamp(60px,7vw,90px)}
+/* ============ DOBRA 2 — ANTES E DEPOIS (REGIÕES) ============ */
+/* primeira seção depois do hero: precisa de respiro próprio no topo */
+.steps{padding:clamp(72px,9vw,120px) 0 clamp(60px,7vw,90px)}
 .steps__head{text-align:center}
 .steps__title{max-width:24ch;margin:0 auto clamp(30px,3.8vw,50px)}
 .steps__title em{color:var(--gold)}
@@ -106,9 +101,9 @@ h1 em,h2 em,h3 em{font-style:italic}
 .step__shot--remodelacao{aspect-ratio:1806/1280;background-image:url("assets/antes-depois-remodelacao.webp")}
 .step__labels{position:absolute;z-index:3;top:16px;left:16px;right:16px;display:flex;justify-content:space-between}
 .step__labels b{padding:7px 13px;border-radius:999px;color:var(--ink);background:rgba(255,253,248,.92);backdrop-filter:blur(3px);font-size:8.5px;font-weight:500;letter-spacing:.16em}
-.step__text{margin:0;max-width:26ch;color:var(--muted);font-size:14px;line-height:1.75}
+/* CTA no lugar do texto de apoio: cada antes e depois converte sozinho */
+.step__cta{width:100%;max-width:280px;padding:0 22px;font-size:14.5px;line-height:1.3}
 .disclaimer{margin:clamp(28px,3.4vw,44px) 0 0;text-align:center;color:#9c948b;font-size:11px}
-.statement .disclaimer--floats{margin-top:clamp(112px,12vw,152px)}
 
 /* modo ancorado (ativado por JS em telas largas) */
 .steps.is-pinned .steps__scroll{position:relative;height:400vh}
@@ -118,7 +113,7 @@ h1 em,h2 em,h3 em{font-style:italic}
 .steps.is-pinned .steps__note{position:absolute;z-index:4;left:0;right:0;bottom:clamp(18px,4vh,42px)}
 .steps.is-pinned .steps__note .disclaimer{margin:0}
 
-/* ================== DOBRA 4 — AUTORIDADE ================== */
+/* ================= DOBRA 4 — AUTORIDADE ================= */
 .authority{padding:clamp(60px,7vw,92px) 0}
 .authority__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,90px);align-items:center}
 .authority__shot{aspect-ratio:2/3;border-radius:var(--r);background:#ded8cd url("assets/dra-rosana.webp") center/cover no-repeat;box-shadow:0 40px 70px -46px rgba(20,18,12,.65)}
@@ -131,16 +126,12 @@ h1 em,h2 em,h3 em{font-style:italic}
 .authority__quote footer small{color:var(--muted);font-size:13px}
 .authority__actions{margin-top:28px}
 
-/* =================== DOBRA 3 — FORMULÁRIO =================== */
+/* ================ DOBRA 3 — FORMULÁRIO ================ */
 .form-section{padding:clamp(62px,7vw,96px) 0;background:var(--ivory)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,6vw,96px);align-items:start}
 .form-aside{position:sticky;top:60px}
 .form-aside h2 em{color:var(--gold)}
 .form-aside__text{margin:20px 0 0;max-width:440px;color:var(--muted);font-size:14.5px}
-.form-aside__list{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:12px;max-width:440px}
-.form-aside__list li{padding-top:12px;border-top:1px solid var(--line);color:#57514b;font-size:13.5px}
-.form-aside__list li b{display:block;font-weight:500}
-.form-aside__list li small{display:block;margin-top:2px;color:var(--muted);font-size:12.5px;line-height:1.6}
 
 .lead-form{padding:clamp(28px,3.4vw,44px);border-radius:var(--r);background:var(--paper)}
 .field{display:block;margin-bottom:22px}
@@ -168,40 +159,52 @@ h1 em,h2 em,h3 em{font-style:italic}
 .is-error input{border-bottom-color:#a53b30}
 .privacy{margin:16px 0 0;text-align:center;color:#857e77;font-size:11.5px}
 
-/* ===================== DOBRA 5 — FAQ ===================== */
+/* ==================== DOBRA 5 — FAQ ==================== */
 .faq{padding:clamp(60px,7vw,92px) 0}
-.faq__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,90px);align-items:start}
-.faq__aside{position:sticky;top:60px}
+/* coluna única centrada: o título fica acima das perguntas, não ao lado */
+.faq__grid{display:grid;justify-items:center;gap:clamp(34px,4.4vw,56px);text-align:center}
+.faq__aside h2{max-width:14ch}
 .faq__aside h2 em{color:var(--gold)}
-.faq__text{margin:20px 0 0;max-width:40ch;color:var(--muted);font-size:14.5px}
-.qa{border-top:1px solid var(--line)}
-.qa details{border-bottom:1px solid var(--line)}
-.qa summary{display:flex;align-items:center;gap:22px;padding:21px 0;cursor:pointer;list-style:none}
+/* cada pergunta é um card: fechado fica discreto, aberto ganha o marfim e o fio dourado */
+.qa{display:grid;gap:12px;width:min(860px,100%);text-align:left}
+.qa details{border:1px solid var(--line);border-radius:var(--r);background:var(--paper);transition:border-color .3s ease,background-color .3s ease,box-shadow .4s ease}
+.qa details:hover{border-color:#d8cfbc}
+.qa details[open]{background:var(--ivory);border-color:rgba(200,162,74,.42);box-shadow:0 22px 44px -34px rgba(20,18,12,.5)}
+.qa summary{display:flex;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.2vw,28px);cursor:pointer;list-style:none}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary span{flex:1;font-family:var(--serif);font-size:clamp(19px,1.9vw,24px)}
-.qa summary i{color:var(--gold);font:300 22px var(--sans);font-style:normal;transition:transform .25s}
-.qa details[open] summary i{transform:rotate(45deg)}
-.qa details p{max-width:640px;margin:0;padding:0 0 24px;color:var(--muted);font-size:14.5px}
+.qa summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:var(--r)}
+.qa summary span{flex:1;font-family:var(--serif);font-size:clamp(18px,1.8vw,23px);line-height:1.3;text-wrap:balance;transition:color .3s ease}
+.qa details[open] summary span{color:var(--ink)}
+/* o "+" vira um selo circular que gira para virar "×" */
+.qa summary i{flex:0 0 34px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(200,162,74,.45);border-radius:50%;color:var(--gold);font:300 20px/1 var(--sans);font-style:normal;transition:transform .35s cubic-bezier(.3,.7,.2,1),background-color .3s ease,color .3s ease}
+.qa summary:hover i{background:rgba(200,162,74,.12)}
+.qa details[open] summary i{transform:rotate(135deg);color:var(--espresso);background:var(--gold);border-color:var(--gold)}
+.qa details p{max-width:640px;margin:0;padding:0 clamp(20px,2.2vw,28px) clamp(20px,2.2vw,26px);color:var(--muted);font-size:14.5px}
+.qa details[open] p{animation:qa-in .4s ease both}
+@keyframes qa-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* saída da FAQ direto para o formulário */
+.faq__cta{margin-top:clamp(26px,3vw,38px);width:100%;max-width:420px;margin-inline:auto}
 
-/* ======================= FECHAMENTO ======================= */
+/* --- FECHAMENTO — seção removida do HTML; estilos mantidos caso volte --- */
 .closing{padding:clamp(68px,7.5vw,104px) 0;text-align:center;color:#fff;background:var(--espresso-2)}
 .closing h2{max-width:16ch;margin:0 auto 32px;color:#fff}
 .closing h2 em{color:var(--champagne)}
 
-/* ========================= RODAPÉ ========================= */
+/* ============ RODAPÉ (encerramento da página) ============ */
 .footer{padding:clamp(46px,5vw,64px) 0 26px;color:#aca69f;background:var(--espresso);overflow:hidden}
-.footer__grid{display:grid;grid-template-columns:1.2fr 1fr;gap:44px}
-.footer__claim{max-width:34ch;margin:0;color:#fff;font-family:var(--serif);font-size:clamp(17px,1.8vw,23px);line-height:1.45}
-.footer__cols{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.footer b{display:block;margin-bottom:14px;color:#fff;font-size:11px;font-weight:400;letter-spacing:.12em}
-.footer__cols p{margin:0;font-size:13px;line-height:1.9}
+.footer{text-align:center}
+.footer__grid{display:grid;justify-items:center;gap:44px}
+.footer b{display:block;color:#fff;font-size:11px;font-weight:400;letter-spacing:.12em}
+/* no desktop rótulo e endereço correm na mesma linha; no mobile empilham centrados */
+.footer__place{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px}
+.footer__place p{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:0;font-size:13px;line-height:1.9}
+.footer__dot{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.5}
 .footer a:hover{color:var(--gold-lit)}
 .wordmark{margin:clamp(30px,4.4vw,56px) 0 0;color:#fff;font-family:var(--serif);font-weight:400;font-size:clamp(46px,11.6vw,166px);line-height:1;letter-spacing:-.02em;text-align:center;white-space:nowrap}
 .wordmark em{font-style:italic;color:var(--gold)}
-.footer__legal{display:flex;justify-content:space-between;gap:40px;margin-top:clamp(24px,3.2vw,40px);padding-top:20px;border-top:1px solid var(--line-dark);color:#8b857e;font-size:11.5px;line-height:1.7}
-.footer__legal p{margin:0;max-width:520px}
-.footer__legal p:last-child{text-align:right}
-.footer__meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px!important}
+.footer__legal{margin-top:clamp(24px,3.2vw,40px);padding-top:20px;border-top:1px solid var(--line-dark);color:#8b857e;font-size:11.5px;line-height:1.7}
+.footer__legal p{margin:0}
+.footer__meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:10px!important}
 .footer__meta i{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.5}
 .footer__link{position:relative;padding:0;border:0;background:none;color:inherit;font-size:11.5px;cursor:pointer;transition:color .25s}
 .footer__link::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .38s cubic-bezier(.3,.7,.2,1)}
@@ -233,56 +236,42 @@ h1 em,h2 em,h3 em{font-style:italic}
   .container,.band__inner,.step{width:min(100% - 40px,1240px);max-width:min(100% - 40px,1240px)}
 
   .hero{padding:80px 0}
-  .float--1{top:-28%;left:0}
-  .float--2{top:-14%;right:0}
-  .float--3{bottom:-38%;left:2%}
-  .float--4{bottom:-22%;right:1%}
   .step{grid-template-columns:1fr;gap:24px}
   .step__head{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
   .step__num{margin:0}
   .step__shot{max-width:680px}
-  .form-grid,.authority__grid,.faq__grid{grid-template-columns:1fr;gap:44px}
-  .form-aside,.faq__aside{position:static}
+  .step__cta{max-width:none}
+  .form-grid,.authority__grid{grid-template-columns:1fr;gap:44px}
+  .form-aside{position:static}
+  .faq__cta{max-width:none}
   .authority__shot{max-width:460px}
-  .footer__grid{grid-template-columns:1fr}
 }
 
 @media(max-width:700px){
   /* no mobile o texto desce para o rodapé do hero, liberando o rosto no topo */
   .hero{align-items:end;padding:0 0 52px}
   .hero__veil{background:linear-gradient(to bottom,rgba(12,12,12,.22) 0%,rgba(12,12,12,.5) 42%,rgba(12,12,12,.88) 100%)}
-  .hero h1{max-width:none}
-  .hero .btn{width:100%;margin-top:24px}
+  .hero h1{max-width:none;font-size:clamp(34px,8.6vw,46px)}
+  .hero .btn{width:100%;min-height:62px;padding:0 22px;margin-top:24px;font-size:16px}
   .hero__note{margin-top:18px}
   .hero__seals{flex-direction:column;align-items:flex-start;gap:9px;margin-top:22px}
-  .statement{padding:56px 0 72px}
-  /* respiro vertical para os quatro resultados, que agora aparecem inteiros */
-  .statement__inner{padding:150px 0}
-  .float{width:clamp(88px,25vw,108px);border-radius:8px;box-shadow:0 0 0 4px var(--paper),0 14px 24px -16px rgba(20,18,12,.55)}
-  .float--1{top:0;left:-10px}
-  .float--2{top:14px;right:-10px}
-  .float--3{bottom:0;left:-10px}
-  .float--4{bottom:14px;right:-10px}
-  .statement .disclaimer--floats{margin-top:36px}
   .band__inner{padding:26px 22px}
   .band__stats{grid-template-columns:1fr;gap:18px;padding-top:18px}
   .band__stats>div{padding:18px 0 0;border-top:1px solid var(--line)}
   .band__stats>div+div{border-left:0}
   .band__stats>div:first-child{padding-top:0;border-top:0}
   .band__stats small{white-space:normal}
+  /* no mobile a FAQ volta a alinhar à esquerda, como o resto da coluna de texto */
+  .faq__grid{justify-items:stretch;text-align:left}
+  .faq__aside h2{max-width:none}
   .lead-form{padding:24px 18px}
   .chips__list{grid-template-columns:1fr}
   .field input{font-size:15.5px}
-  /* rodapé centralizado no mobile, acompanhando a assinatura Serela Clinic */
-  .footer{text-align:center}
   .footer__grid{gap:34px}
-  .footer__claim{max-width:30ch;margin-inline:auto}
-  .footer__cols{grid-template-columns:1fr;gap:26px}
-  .footer__legal{display:block;text-align:center}
-  .footer__legal p{max-width:34ch;margin-inline:auto;text-wrap:balance}
-  .footer__meta{justify-content:center}
-  /* o alinhamento à direita é do desktop; no mobile precisa voltar ao centro */
-  .footer__legal p:last-child{margin-top:16px;text-align:center}
+  .footer__place{display:block}
+  .footer__place b{margin-bottom:10px}
+  .footer__place p{display:block}
+  .footer__dot{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -290,6 +279,7 @@ h1 em,h2 em,h3 em{font-style:italic}
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.btn:hover,.btn:active,.btn:focus-visible{transform:none;transition:color .2s,background-color .2s}
   .btn::before,.footer__link::after{display:none}
+  .qa details[open] p{animation:none}
 }
 
 /* ==================== PÁGINA DE OBRIGADO ==================== */
